@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     createForm()
     fetchUsers()
-    // userDelete()
+    userDelete()
     
 })
 
@@ -63,4 +63,18 @@ function userFormSubmission(e){
     let u = new User(user.id, user.name, user.username, user.email)
     u.renderUser()
 })
+}
+
+function userDelete(){
+   userDiv = document.getElementById('users-container')
+    userDiv.addEventListener('click',(e)=>{
+        if (e.target.className === "delete-btn"){
+          fetch(`${BASE_URL}/users/${e.target.dataset.id}`, {
+            method:'DELETE'
+          })
+          .then(response => {
+            e.target.parentElement.remove()
+          })
+        }
+      })
 }
