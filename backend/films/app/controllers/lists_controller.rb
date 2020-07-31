@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
 
-    render json: @lists
+    render json: @lists, include: :movies
   end
 
   # GET /lists/1

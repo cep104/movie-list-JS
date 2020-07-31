@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(version: 2020_07_30_234918) do
   create_table "lists", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "user_id"
+    t.integer "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_lists_on_user_id"
+    t.index ["users_id"], name: "index_lists_on_users_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 2020_07_30_234918) do
     t.string "title"
     t.text "description"
     t.integer "rating"
-    t.integer "list_id"
+    t.integer "lists_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["list_id"], name: "index_movies_on_list_id"
+    t.index ["lists_id"], name: "index_movies_on_lists_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +40,6 @@ ActiveRecord::Schema.define(version: 2020_07_30_234918) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "lists", "users", column: "users_id"
+  add_foreign_key "movies", "lists", column: "lists_id"
 end
