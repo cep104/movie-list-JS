@@ -5,7 +5,7 @@ class CreateMovies < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :description
       t.integer :rating
-      t.belongs_to :user
+      t.belongs_to :list
       t.timestamps
     end
   end
