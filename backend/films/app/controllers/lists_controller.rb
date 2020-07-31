@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
 
-    render json: @lists, include: :movies
+    render json: @lists
   end
 
   # GET /lists/1
@@ -46,6 +46,6 @@ class ListsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def list_params
-      params.require(:list).permit(:title, :description)
+      params.require(:list).permit(:title, :description, :user)
     end
 end

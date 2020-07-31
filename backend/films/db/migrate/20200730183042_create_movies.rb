@@ -5,7 +5,7 @@ class CreateMovies < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :description
       t.integer :rating
-      t.references :lists, null: false, foreign_key: true
+      t.references :list, null: false, foreign_key: true
       t.timestamps
     end
   end
