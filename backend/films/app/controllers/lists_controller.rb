@@ -3,9 +3,8 @@ class ListsController < ApplicationController
 
   # GET /lists
   def index
-    @lists = List.all
-
-    render json: @lists
+    lists = List.all
+    render json: lists
   end
 
   # GET /lists/1
@@ -16,6 +15,7 @@ class ListsController < ApplicationController
   # POST /lists
   def create
     @list = List.new(list_params)
+
 
     if @list.save
       render json: @list, status: :created, location: @list
@@ -46,6 +46,6 @@ class ListsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def list_params
-      params.require(:list).permit(:title, :description, :user)
+      params.require(:list).permit(:title, :description, :users)
     end
 end
