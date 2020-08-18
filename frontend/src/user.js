@@ -21,3 +21,4 @@ class User{
     }
     // instance method that renders object to dom
 }
+

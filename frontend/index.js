@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     createForm()
     fetchUsers()
     userDelete()
+    fetchLists()
+    
+    
     
 })
 
@@ -78,3 +81,36 @@ function userDelete(){
         }
       })
 }
+
+function fetchLists(){
+    fetch(`${BASE_URL}/lists`)
+    .then(resp => resp.json())
+    .then(listData => {
+        console.log(listData)
+        for (const list of listData){
+            let l = new List(list.id, list.title, list.description, list.user, list.movies)
+            l.renderList();
+        }
+        // do something with the data we fetch
+    })
+   
+}
+
+
+
+function fetchMovies(){
+    fetch(`${BASE_URL}/movies`)
+    .then(resp => resp.json())
+    .then(movieData => {
+        console.log(movieData)
+        for (const movie of movieData){
+            let m = new Movie(movie.id, movie.img_src, movie.title, movie.description, movie.rating, movie.list)
+            m.renderMovie();
+        }
+        // do something with the data we fetch
+    })
+}
+
+
+
+

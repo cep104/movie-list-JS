@@ -15,7 +15,7 @@ class ListsController < ApplicationController
   # POST /lists
   def create
     @list = List.new(list_params)
-
+    @user = find_or_create_by(username: list_params[:user].capitalize)
 
     if @list.save
       render json: @list, status: :created, location: @list
