@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     createForm()
+    createListForm()
     fetchUsers()
     userDelete()
     fetchLists()
@@ -96,6 +97,48 @@ function fetchLists(){
    
 }
 
+function createListForm(){
+    let listsForm = document.getElementById('lists-form')
+
+    listsForm.innerHTML += 
+    `
+    <form>
+    <h2> List Form </h2>
+    <label for="title">Title: </label>
+    <input type="text" id="title"><br>
+    <label for="description">Description: </label>
+    <input type="text" id="description"><br>
+    <input type="submit" value="Create Movie List">
+    </form>
+    `
+    listsForm.addEventListener('submit', listFormSubmission)
+}
+
+function listFormSubmission(e){
+    e.preventDefault()
+    let title = document.getElementById('title').value
+    let description = document.getElementById('description').value
+    
+    let list = {
+        title: title,
+        description: description
+    }
+
+    fetch(`${BASE_URL}/lists`,{
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(list)
+}) 
+.then(response => response.json() )
+.then(list => {
+    let l = new List(list.id, list.title, list.description, list.movies)
+    l.renderList()
+})
+}
+
 
 
 function fetchMovies(){
@@ -110,6 +153,44 @@ function fetchMovies(){
         // do something with the data we fetch
     })
 }
+
+const renderMovie = (movie) => {
+    const ul = document.querySelector(`div[data-id = '${movie.list_id}']`)
+    console.log(ul)
+    const li = document.createElement('li')
+    const button = document.createElement('button')
+    
+    li.innerHTML = `${movie.title}`
+    // button.setAttribute('class', 'release')
+    // button.setAttribute('data-movie-id', movie.id)
+    // button.innerHTML = 'Release'
+
+    
+
+    // li.appendChild(button)
+    ul.appendChild(li)
+ }
+
+const createMovie = (e) => {
+    e.preventDefault()
+    const configObj = {
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            list_id: e.target.dataset.listId})
+    }
+    fetch(`${BASE_URL}/movies`, configObj)
+    .then(resp => resp.json())
+    .then(json => {
+      if (json.message){
+        alert(json.message)
+      } else {
+        renderMovie(json)
+      }})
+  }
 
 
 

@@ -46,6 +46,6 @@ class MoviesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def movie_params
-      params.require(:movie).permit(:img_src, :title, :description, :rating, :lists)
+      params.require(:movie).permit(:img_src, :title, :description, :rating, :list)
     end
 end

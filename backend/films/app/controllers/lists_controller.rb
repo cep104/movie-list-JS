@@ -15,8 +15,7 @@ class ListsController < ApplicationController
   # POST /lists
   def create
     @list = List.new(list_params)
-    @user = find_or_create_by(username: list_params[:user].capitalize)
-
+    
     if @list.save
       render json: @list, status: :created, location: @list
     else
@@ -46,6 +45,6 @@ class ListsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def list_params
-      params.require(:list).permit(:title, :description, :users)
+      params.require(:list).permit(:title, :description, movie_ids: [], movie_attributes:[:img_src, :title, :description, :rating])
     end
 end
