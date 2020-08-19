@@ -10,24 +10,35 @@ class List{
     }
 
     renderList(){
+        let addMovie = false;
         let listDiv = document.getElementById('list-container')
         const div = document.createElement('div')
         const h3 = document.createElement('h3')
         const ul = document.createElement('ul')
         const h5 = document.createElement('h5')
+        const movieFormContainer = document.createElement('div')
         const button = document.createElement('button')
+        movieFormContainer.setAttribute('id', 'movieFormContainer')
         button.setAttribute('data-list-id', this.id)
         div.setAttribute('data-id', this.id)
         button.innerHTML = 'Add Movie'
         h3.innerHTML = `${this.title}`
+        movieFormContainer.innerText = 'This works'
         listDiv.appendChild(div)
         div.appendChild(h3)
         div.appendChild(h5)
         div.appendChild(ul)
         div.appendChild(button)
-        button.addEventListener('click', function(){
-            console.log('it works')
+        div.appendChild(movieFormContainer)
+        button.addEventListener('click', () => {
+             addMovie = !addMovie;
+            if (addMovie) {
+                movieFormContainer.style.display = "block";
+            } else {
+                movieFormContainer.style.display = "none";
+              }
         })
+        
         this.movies.forEach(movie => renderMovie(movie))
         // this.movies.forEach(movie => {
         //     const li = document.createElement('li')
