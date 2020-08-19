@@ -154,8 +154,10 @@ function fetchMovies(){
     })
 }
 
+
+
 const renderMovie = (movie) => {
-    const ul = document.querySelector(`div[data-id = '${movie.list_id}']`)
+    const ul = document.querySelector(`div[data-id = '${movie.list_id}'] ul`)
     console.log(ul)
     const li = document.createElement('li')
     const button = document.createElement('button')

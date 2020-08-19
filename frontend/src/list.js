@@ -20,10 +20,19 @@ class List{
         const button = document.createElement('button')
         movieFormContainer.setAttribute('id', 'movieFormContainer')
         button.setAttribute('data-list-id', this.id)
+        ul.setAttribute('data-list-id', this.id)
         div.setAttribute('data-id', this.id)
         button.innerHTML = 'Add Movie'
         h3.innerHTML = `${this.title}`
-        movieFormContainer.innerText = 'This works'
+        movieFormContainer.innerHTML = `
+        <form>
+        <label for="title">Title: </label>
+        <input type="text" id="title"><br>
+        <label for="description">Description: </label>
+        <input type="text" id="description"><br>
+        <input type="submit" value="submit">
+        </form>
+        `
         listDiv.appendChild(div)
         div.appendChild(h3)
         div.appendChild(h5)
