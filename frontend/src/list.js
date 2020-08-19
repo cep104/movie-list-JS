@@ -19,6 +19,7 @@ class List{
         const movieFormContainer = document.createElement('div')
         const button = document.createElement('button')
         movieFormContainer.setAttribute('id', 'movieFormContainer')
+        movieFormContainer.style.display = "none";
         button.setAttribute('data-list-id', this.id)
         ul.setAttribute('data-list-id', this.id)
         div.setAttribute('data-id', this.id)
@@ -33,6 +34,10 @@ class List{
         <input type="submit" value="submit">
         </form>
         `
+        movieFormContainer.addEventListener('submit', function(e){
+            e.preventDefault()
+            console.log('working')
+        })
         listDiv.appendChild(div)
         div.appendChild(h3)
         div.appendChild(h5)
