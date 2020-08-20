@@ -157,12 +157,11 @@ function fetchMovies(){
 
 
 const renderMovie = (movie) => {
-    const ul = document.querySelector(`div[data-id = '${movie.list_id}'] ul`)
-    console.log(ul)
+    const ul = document.querySelector(`div[data-id = '${movie.list_id}'] ol`)
     const li = document.createElement('li')
     const button = document.createElement('button')
     
-    li.innerHTML = `${movie.title}`
+    li.innerHTML = `${movie.title} ${movie.rating}`
     // button.setAttribute('class', 'release')
     // button.setAttribute('data-movie-id', movie.id)
     // button.innerHTML = 'Release'

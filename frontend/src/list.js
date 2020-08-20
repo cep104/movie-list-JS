@@ -14,7 +14,7 @@ class List{
         let listDiv = document.getElementById('list-container')
         const div = document.createElement('div')
         const h3 = document.createElement('h3')
-        const ul = document.createElement('ul')
+        const ul = document.createElement('ol')
         const h5 = document.createElement('h5')
         const movieFormContainer = document.createElement('div')
         const button = document.createElement('button')
