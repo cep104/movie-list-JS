@@ -35,7 +35,7 @@ class List{
         <label for="rating">Rating: </label>
         <input type="number" id="rating" placeholder="Scale of 1-10"><br>
         <label for="img_src">Image: </label>
-        <input type="text" id="img_src" placeholder="Enter image URL"><br>
+        <input type="file" id="img_src" placeholder="Enter image URL"><br>
         <input type="submit" value="submit">
         </form>
         `

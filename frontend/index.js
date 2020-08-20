@@ -159,9 +159,11 @@ function fetchMovies(){
 const renderMovie = (movie) => {
     const ul = document.querySelector(`div[data-id = '${movie.list_id}'] ol`)
     const li = document.createElement('li')
+    const image = document.createElement('div')
     const button = document.createElement('button')
     
     li.innerHTML = `${movie.title} ${movie.rating}`
+    image.innerHTML = `<img src=${movie.img_src}>`
     // button.setAttribute('class', 'release')
     // button.setAttribute('data-movie-id', movie.id)
     // button.innerHTML = 'Release'
@@ -170,6 +172,7 @@ const renderMovie = (movie) => {
 
     // li.appendChild(button)
     ul.appendChild(li)
+    ul.appendChild(image)
  }
 
 const createMovie = (e) => {
