@@ -175,6 +175,14 @@ const renderMovie = (movie) => {
 
 const createMovie = (e) => {
     e.preventDefault()
+    
+    let title = e.target.title.value
+    let description = e.target.description.value
+    let rating = e.target.rating.value
+    let img_src = e.target.img_src.value
+    let listAttribute = e.target.parentElement.attributes[1].value
+    let list_id = parseInt(listAttribute)
+    console.log(title)
     const configObj = {
         method:"POST",
         headers: {
@@ -182,7 +190,12 @@ const createMovie = (e) => {
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            list_id: e.target.dataset.listId})
+            img_src: img_src,
+            title: title,
+            description: description,
+            rating: rating,
+            list_id: list_id
+        })
     }
     fetch(`${BASE_URL}/movies`, configObj)
     .then(resp => resp.json())

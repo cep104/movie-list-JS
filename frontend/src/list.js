@@ -19,6 +19,7 @@ class List{
         const movieFormContainer = document.createElement('div')
         const button = document.createElement('button')
         movieFormContainer.setAttribute('id', 'movieFormContainer')
+        movieFormContainer.setAttribute('data_id', this.id)
         movieFormContainer.style.display = "none";
         button.setAttribute('data-list-id', this.id)
         ul.setAttribute('data-list-id', this.id)
@@ -28,16 +29,17 @@ class List{
         movieFormContainer.innerHTML = `
         <form>
         <label for="title">Title: </label>
-        <input type="text" id="title"><br>
+        <input type="text" id="title" ><br>
         <label for="description">Description: </label>
         <input type="text" id="description"><br>
+        <label for="rating">Rating: </label>
+        <input type="number" id="rating" placeholder="Scale of 1-10"><br>
+        <label for="img_src">Image: </label>
+        <input type="text" id="img_src" placeholder="Enter image URL"><br>
         <input type="submit" value="submit">
         </form>
         `
-        movieFormContainer.addEventListener('submit', function(e){
-            e.preventDefault()
-            console.log('working')
-        })
+        movieFormContainer.addEventListener('submit', createMovie)
         listDiv.appendChild(div)
         div.appendChild(h3)
         div.appendChild(h5)
