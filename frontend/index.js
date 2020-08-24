@@ -89,7 +89,7 @@ function fetchLists(){
     .then(listData => {
         console.log(listData)
         for (const list of listData){
-            let l = new List(list.id, list.title, list.description, list.user, list.movies)
+            let l = new List(list)
             l.renderList();
         }
         // do something with the data we fetch
@@ -117,7 +117,7 @@ function createListForm(){
 function listFormSubmission(e){
     e.preventDefault()
     let title = document.getElementById('title').value
-    let description = document.getElementById('description').value
+    let description = document.getElementById('description').value || 'hahahaha'
     
     let list = {
         title: title,
@@ -134,7 +134,7 @@ function listFormSubmission(e){
 }) 
 .then(response => response.json() )
 .then(list => {
-    let l = new List(list.id, list.title, list.description, list.movies)
+    let l = new List(list)
     l.renderList()
 })
 }

@@ -1,9 +1,8 @@
 class List{
-    constructor(id, title, description, user, movies){
+    constructor({ id, title, description, movies }){
         this.id = id;
         this.title = title;
-        this.description = description;
-        this.user = user;
+        this.description = description || 'best movie ever';
         this.movies = movies;
         
         
