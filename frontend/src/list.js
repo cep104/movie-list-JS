@@ -15,14 +15,19 @@ class List{
         const h3 = document.createElement('h3')
         const ul = document.createElement('ol')
         const h5 = document.createElement('h5')
+        const deleteBtn = document.createElement('button')
         const movieFormContainer = document.createElement('div')
         const button = document.createElement('button')
+        deleteBtn.setAttribute('data-id', this.id)
+        deleteBtn.setAttribute('class', 'delete-btn')
+        div.setAttribute('class', 'lists-container')
         movieFormContainer.setAttribute('id', 'movieFormContainer')
         movieFormContainer.setAttribute('data_id', this.id)
         movieFormContainer.style.display = "none";
         button.setAttribute('data-list-id', this.id)
         ul.setAttribute('data-list-id', this.id)
         div.setAttribute('data-id', this.id)
+        deleteBtn.innerHTML = 'Delete List'
         button.innerHTML = 'Add Movie'
         h3.innerHTML = `${this.title}`
         movieFormContainer.innerHTML = `
@@ -44,7 +49,11 @@ class List{
         div.appendChild(h5)
         div.appendChild(ul)
         div.appendChild(button)
+        div.appendChild(deleteBtn)
         div.appendChild(movieFormContainer)
+        
+       
+
         button.addEventListener('click', () => {
              addMovie = !addMovie;
             if (addMovie) {
@@ -53,6 +62,18 @@ class List{
                 movieFormContainer.style.display = "none";
               }
         })
+
+        
+      deleteBtn.addEventListener('click', (e) => {
+        console.log(e.target.dataset.id)
+        fetch(`${BASE_URL}/lists/${e.target.dataset.id}`, {
+          method:'DELETE'
+        })
+        .then(response => {
+          e.target.parentElement.remove()
+        })
+      })
+         
         
         this.movies.forEach(movie => renderMovie(movie))
         // this.movies.forEach(movie => {

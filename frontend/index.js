@@ -139,6 +139,20 @@ function listFormSubmission(e){
 })
 }
 
+function listDelete(){
+    listDiv = document.getElementsByClassName('lists-container')
+     listDiv.addEventListener('click',(e)=>{
+         if (e.target.className === "delete-btn"){
+           fetch(`${BASE_URL}/lists/${e.target.dataset.id}`, {
+             method:'DELETE'
+           })
+           .then(response => {
+             e.target.parentElement.remove()
+           })
+         }
+       })
+ }
+
 
 
 function fetchMovies(){
