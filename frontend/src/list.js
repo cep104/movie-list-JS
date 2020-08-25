@@ -81,12 +81,16 @@ class List{
 
         
         deleteBtn.addEventListener('click', (e) => {
+          
+          let result = confirm(`Want to delete The ${this.title}?`);
+        if (result) {
           fetch(`${BASE_URL}/lists/${e.target.dataset.id}`, {
             method:'DELETE'
           })
           .then(response => {
             e.target.parentElement.remove()
           })
+        }
         })
          
         
