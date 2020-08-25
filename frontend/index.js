@@ -139,19 +139,7 @@ function listFormSubmission(e){
 })
 }
 
-function listDelete(){
-    listDiv = document.getElementsByClassName('lists-container')
-     listDiv.addEventListener('click',(e)=>{
-         if (e.target.className === "delete-btn"){
-           fetch(`${BASE_URL}/lists/${e.target.dataset.id}`, {
-             method:'DELETE'
-           })
-           .then(response => {
-             e.target.parentElement.remove()
-           })
-         }
-       })
- }
+
 
 
 
@@ -176,17 +164,19 @@ const renderMovie = (movie) => {
     const image = document.createElement('div')
     const button = document.createElement('button')
     
-    li.innerHTML = `${movie.title} ${movie.rating}`
+    li.innerHTML = `${movie.title} ${movie.rating} `
     image.innerHTML = `<img src=${movie.img_src}>`
-    // button.setAttribute('class', 'release')
-    // button.setAttribute('data-movie-id', movie.id)
-    // button.innerHTML = 'Release'
+    button.setAttribute('class', 'remove')
+    button.setAttribute('data-movie-id', movie.id)
+    button.innerHTML = 'x'
 
     
 
-    // li.appendChild(button)
+    li.appendChild(button)
     ul.appendChild(li)
     ul.appendChild(image)
+
+    button.addEventListener('click', deleteMovie)
  }
 
 const createMovie = (e) => {
@@ -222,6 +212,21 @@ const createMovie = (e) => {
         renderMovie(json)
       }})
   }
+
+  const deleteMovie = (e) => {
+    e.preventDefault()
+    console.log(e.target.dataset.movieId)
+    const configObj = {
+        method:"DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+        
+    }
+    fetch(`${BASE_URL}/movies/${e.target.dataset.movieId}`, configObj)
+    e.target.parentElement.remove()
+ }
 
 
 
