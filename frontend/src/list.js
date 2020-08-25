@@ -33,6 +33,7 @@ class List{
           button.setAttribute('data-list-id', this.id)
           ul.setAttribute('data-list-id', this.id)
           div.setAttribute('data-id', this.id)
+          
 
           // setting innerHTML ***********
 
@@ -40,7 +41,7 @@ class List{
           button.innerHTML = 'Add Movie'
           h3.innerHTML = `${this.title}`
           movieFormContainer.innerHTML = `
-            <form>
+            <form id='myForm'>
               <label for="title">Title: </label>
               <input type="text" id="title" ><br>
               <label for="description">Description: </label>

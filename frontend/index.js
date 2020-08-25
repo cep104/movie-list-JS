@@ -174,9 +174,10 @@ const renderMovie = (movie) => {
 
     li.appendChild(button)
     ul.appendChild(li)
-    ul.appendChild(image)
+    li.appendChild(image)
 
     button.addEventListener('click', deleteMovie)
+    
  }
 
 const createMovie = (e) => {
@@ -210,12 +211,14 @@ const createMovie = (e) => {
         alert(json.message)
       } else {
         renderMovie(json)
+        document.getElementById("myForm").reset();
       }})
   }
 
   const deleteMovie = (e) => {
     e.preventDefault()
-    console.log(e.target.dataset.movieId)
+    console.log(e.target.parentElement.parentElement)
+    
     const configObj = {
         method:"DELETE",
         headers: {
@@ -225,7 +228,14 @@ const createMovie = (e) => {
         
     }
     fetch(`${BASE_URL}/movies/${e.target.dataset.movieId}`, configObj)
-    e.target.parentElement.remove()
+        e.target.parentElement.remove()
+        
+        
+       
+    
+    
+    
+    
  }
 
 
