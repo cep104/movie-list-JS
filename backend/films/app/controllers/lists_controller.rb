@@ -3,7 +3,7 @@ class ListsController < ApplicationController
 
   # GET /lists
   def index
-    lists = List.all
+    lists = List.all.order('created_at DESC')
     render json: lists
   end
 

@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   # GET /movies
   def index
     @movies = Movie.all
-
+    @movies.sort_by {|obj| obj.rating}
     render json: @movies
   end
 

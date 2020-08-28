@@ -2,10 +2,8 @@ class List{
     constructor({ id, title, description, movies }){
         this.id = id;
         this.title = title;
-        this.description = description || 'best movie ever';
+        this.description = description;
         this.movies = movies;
-        
-        
     }
 
     renderList(){
@@ -17,7 +15,6 @@ class List{
         const div = document.createElement('div')
         const h3 = document.createElement('h3')
         const ul = document.createElement('ol')
-        const h5 = document.createElement('h5')
         const deleteBtn = document.createElement('button')
         const movieFormContainer = document.createElement('div')
         const button = document.createElement('button')
@@ -27,6 +24,7 @@ class List{
           deleteBtn.setAttribute('data-id', this.id)
           deleteBtn.setAttribute('class', 'delete-btn')
           div.setAttribute('class', 'lists-container')
+          div.setAttribute('class', 'ind-list')
           movieFormContainer.setAttribute('id', 'movieFormContainer')
           movieFormContainer.setAttribute('data_id', this.id)
           movieFormContainer.style.display = "none";
@@ -58,7 +56,6 @@ class List{
 
         listDiv.appendChild(div)
         div.appendChild(h3)
-        div.appendChild(h5)
         div.appendChild(ul)
         div.appendChild(button)
         div.appendChild(deleteBtn)

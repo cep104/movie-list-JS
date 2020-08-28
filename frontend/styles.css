@@ -1,15 +1,71 @@
 body{
   margin-top: 0;
+  background-color: #f8e6cb;
+  font-family: 'Lexend Peta', sans-serif;
+  background-image: url(../frontend/images/tickets.gif);
+  background-size: 60%;
+  background-repeat: repeat-x;
+  background-position: 500px 100px;
+  
+  
+}
+
+
+ol li {
+  background-color: #f8d49b;
+  width:80%;
+  border: #ff8c8c solid ;
+  margin-bottom: 2%;
+}
+
+.lists-container{
+  background-color: #e168bb;
+  margin-bottom: 2%;
+  display:block;
+  margin-left: 5%;
 }
 
 header {
-    background-color:black;
+    background-color:#ff8c8c;
     margin: 0 auto;
-    color:white;
+    color:#f8e6cb;
     text-align: center;
   }
 
 h2 {
   margin-top: 0;
   padding: 2% 0;
+}
+
+button {
+  background-color:#ff8c8c;
+  text-align: center;
+  margin-left: 1%;
+
+}
+
+button:hover {
+  background-color:#f8bc98;
+}
+
+#listForm {
+  display:none;
+}
+h2{
+  display: inline;
+}
+h2:hover{
+  color: #ff8c8c;
+  cursor: pointer;
+  
+}
+.popcorn{
+  width: 40px;
+}
+
+.ind-list {
+  background-color: #f8bc98;
+  width: 450px;
+  padding: 2%;
+  margin: 2%;
 }
