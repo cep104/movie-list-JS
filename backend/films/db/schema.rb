@@ -51,14 +51,6 @@ ActiveRecord::Schema.define(version: 2020_08_28_061458) do
     t.index ["list_id"], name: "index_movies_on_list_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "movies", "lists"
 end

@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user_a = User.create(name:'Jessica', username:'cep104', email: 'cep104@gmail.com')
+
 list_a = List.create(title:'Best Horror Movies', description: 'Best horror movies of the decade')
 list_b = List.create(title:'Best Rom Coms', description: 'Best Rom Com movies of the decade')
 Movie.create(title:'Army of Darkness', description:'the third Evil Dead film Staring Bruce Campbell and directed by Sam Rami', rating: 10, list: list_a)

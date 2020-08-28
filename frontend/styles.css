@@ -10,7 +10,9 @@ body{
   
 }
 
-
+h3 {
+  text-decoration: underline;
+}
 ol li {
   background-color: #f8d49b;
   width:80%;
@@ -36,6 +38,7 @@ header {
 h2 {
   margin-top: 0;
   padding: 2% 0;
+  
 }
 
 button {
@@ -58,6 +61,8 @@ h2{
 h2:hover{
   color: #ff8c8c;
   cursor: pointer;
+  background-color: #f8d49b;
+  display: inline-block;
   
 }
 .popcorn{
@@ -69,6 +74,7 @@ h2:hover{
   width: 450px;
   padding: 2%;
   margin: 2%;
+  float: left;
 }
 
 .movie-img {
@@ -82,4 +88,13 @@ p {
 }
 .edit-form {
   display:none;
+}
+
+.movie-title:hover {
+  color: #f8e6cb;
+  cursor: pointer;
+}
+
+ol {
+  display: none;
 }

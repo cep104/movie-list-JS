@@ -75,7 +75,7 @@ function listFormSubmission(e){
     let l = new List(list)
     l.renderList()
     listClick()
-
+    
 })
 }
 
@@ -104,7 +104,7 @@ const renderMovie = (movie) => {
     li.innerHTML = `
     <h3>${movie.title}</h3> 
     <p>Rating: ${movie.rating}/10 </p>
-    <p>${movie.description}</p> `
+    <p>Description: ${movie.description}</p> `
 
     image.innerHTML = `<img class='movie-img' src=${movie.img_src}>`
 
