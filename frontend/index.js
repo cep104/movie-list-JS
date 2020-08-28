@@ -121,8 +121,8 @@ const renderMovie = (movie) => {
     <form id='editForm${movie.id}' class='edit-form' data-set=${movie.id}>
               <label for="title">Title: </label>
               <input type="text" id="title" ><br>
-              <label for="description">Description: </label>
-              <input type="text" id="description"><br>
+              <label for="description">Description: </label><br>
+              <textarea name="description" rows="4" cols="20"></textarea><br>
               <label for="rating">Rating: </label>
               <input type="number" id="rating" placeholder="Scale of 1-10"><br>
               <label for="img_src">Image: </label>
@@ -141,13 +141,13 @@ const renderMovie = (movie) => {
     button.addEventListener('click', deleteMovie)
     editFormContainer.addEventListener('submit', editMovies)
     editButton.addEventListener('click', ()=>{
-        let listFormContainer = document.getElementById(`editForm${movie.id}`)
+        let editFormContainer = document.getElementById(`editForm${movie.id}`)
 
     addList = !addList;
               if (addList) {
-                listFormContainer.style.display = "block";
+                editFormContainer.style.display = "block";
               } else {
-                listFormContainer.style.display = "none";
+                editFormContainer.style.display = "none";
               }
     })
     
