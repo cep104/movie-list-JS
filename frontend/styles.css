@@ -69,3 +69,7 @@ h2:hover{
   padding: 2%;
   margin: 2%;
 }
+
+.movie-img {
+  width:100%;
+}

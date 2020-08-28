@@ -1,5 +1,7 @@
 class Movie < ApplicationRecord
     belongs_to :list
+    has_one_attached :image_src
+    validates :rating, numericality: { less_than_or_equal_to: 10 }
     validate do 
         movie_count_valid?
         not_a_duplicate?
@@ -19,4 +21,6 @@ class Movie < ApplicationRecord
           errors.add(:list_max, 'this movie has already been added to this list.')
         end
       end
+
+      
 end

@@ -2,16 +2,18 @@ document.addEventListener('DOMContentLoaded', () => {
     createListForm()
     fetchLists()
 })
+// defining base url and toggles **************
 
 const BASE_URL = "http://localhost:3000"
 let addList = false;
 let editMovie = false;
 
+// list functions **************
+
 function fetchLists(){
     fetch(`${BASE_URL}/lists`)
     .then(resp => resp.json())
     .then(listData => {
-        console.log(listData)
         for (const list of listData){
             let l = new List(list)
             l.renderList();
@@ -77,9 +79,7 @@ function listFormSubmission(e){
 })
 }
 
-
-
-
+//  Movie functions **************
 
 function fetchMovies(){
     fetch(`${BASE_URL}/movies`)
@@ -93,11 +93,8 @@ function fetchMovies(){
     })
 }
 
-
-
 const renderMovie = (movie) => {
     const ul = document.querySelector(`div[data-id = '${movie.list_id}'] ol`)
-    
     const li = document.createElement('li')
     const image = document.createElement('div')
     const button = document.createElement('button')
@@ -105,16 +102,17 @@ const renderMovie = (movie) => {
     const editFormContainer = document.createElement('div')
     
     li.innerHTML = `
-    
     <h3>${movie.title}</h3> 
     <p>Rating: ${movie.rating}/10 </p>
     <p>${movie.description}</p> `
 
-    image.innerHTML = `<img src=${movie.img_src}>`
+    image.innerHTML = `<img class='movie-img' src=${movie.img_src}>`
+
     button.setAttribute('class', 'remove')
     button.setAttribute('data-movie-id', movie.id)
     editButton.setAttribute('data-movie-id', movie.id)
     editButton.setAttribute('class', 'editButton')
+
     button.innerHTML = 'Delete Movie'
     editButton.innerHTML = 'Edit Movie'
    
@@ -128,17 +126,18 @@ const renderMovie = (movie) => {
               <label for="rating">Rating: </label>
               <input type="number" id="rating" placeholder="Scale of 1-10"><br>
               <label for="img_src">Image: </label>
-              <input type="file" id="img_src" placeholder="Enter image URL"><br>
+              <input type="text" id="img_src" placeholder="Enter image URL"><br>
               <input type="submit" value="submit">
             </form>
     
     `
-
+    li.appendChild(image)
     li.appendChild(button)
+    
     li.appendChild(editButton)
     li.appendChild(editFormContainer)
     ul.appendChild(li)
-    li.appendChild(image)
+    
 
     button.addEventListener('click', deleteMovie)
     editFormContainer.addEventListener('submit', editMovies)
@@ -175,6 +174,7 @@ const renderMovie = (movie) => {
     .then(resp => resp.json())
     .then(json => {
     console.log(json)
+    location.reload();
 })
   }
 
