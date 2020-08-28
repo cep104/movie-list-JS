@@ -74,7 +74,7 @@ function listFormSubmission(e){
 .then(list => {
     let l = new List(list)
     l.renderList()
-    location.reload();
+    // location.reload();
     
     
 })
@@ -102,7 +102,7 @@ const renderMovie = (movie) => {
     const editFormContainer = document.createElement('div')
     
     li.innerHTML = `
-    <h3>${movie.title}</h3> 
+    <h3 id='movietitle'>${movie.title}</h3> 
     <p>Rating: ${movie.rating}/10 </p>
     <p>Description: ${movie.description}</p> `
 
@@ -112,6 +112,7 @@ const renderMovie = (movie) => {
     button.setAttribute('data-movie-id', movie.id)
     editButton.setAttribute('data-movie-id', movie.id)
     editButton.setAttribute('class', 'editButton')
+    li.setAttribute('data-id', movie.id)
 
     button.innerHTML = 'Delete Movie'
     editButton.innerHTML = 'Edit Movie'
@@ -163,13 +164,24 @@ const renderMovie = (movie) => {
     let rating = e.target.rating.value
     let img_src = e.target.img_src.value
     let listAttribute = e.target.parentElement.parentElement.parentElement
+    let li = e.target.parentElement.parentElement
+    const button = document.createElement('button')
+    const editButton = document.createElement('button')
+    const editFormContainer = document.createElement('div')
+    button.setAttribute('class', 'remove')
+    
+    editButton.setAttribute('class', 'editButton')
+
+    button.innerHTML = 'Delete Movie'
+    editButton.innerHTML = 'Edit Movie'
+    let movie_id = li.dataset.id
     let list_id = listAttribute.dataset.listId
-   console.log(list_id)
+        console.log(li)
     const configObj = {
-        method:"PUT",
+        method:"PATCH",
         headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Content-Type": "application/json"
+            
         },
         body: JSON.stringify({
             img_src: img_src,
@@ -182,10 +194,34 @@ const renderMovie = (movie) => {
     fetch(`${BASE_URL}/movies/${e.target.dataset.set}`, configObj)
     .then(resp => resp.json())
     .then(json => {
-    console.log(json)
-    location.reload();
-})
-  }
+        li.innerHTML = `
+        <h3 id='movietitle'>${json.title}</h3> 
+        <p>Rating: ${json.rating}/10 </p>
+        <p>Description: ${json.description}</p>
+        <div><img class='movie-img' src=${json.img_src}>
+        </div> 
+        `
+        button.setAttribute('data-movie-id', json.id)
+        editButton.setAttribute('data-movie-id', json.id)
+        li.appendChild(button)
+        li.appendChild(editButton)
+        li.appendChild(editFormContainer)
+
+        button.addEventListener('click', deleteMovie)
+    editFormContainer.addEventListener('submit', editMovies)
+    editButton.addEventListener('click', ()=>{
+        let editFormContainer = document.getElementById(`editForm${json.id}`)
+
+    addList = !addList;
+              if (addList) {
+                editFormContainer.style.display = "block";
+              } else {
+                editFormContainer.style.display = "none";
+              }
+    })
+    })
+}
+  
 
 const createMovie = (e) => {
     e.preventDefault()
