@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     if @movie.save
       render json: @movie, status: :created, location: @movie
     else
-      render json: {message: @movie.errors.messages[:list_max][0]}
+      render json: {message: @movie.errors.messages[:list_max][0, 1]}
     end
   end
 

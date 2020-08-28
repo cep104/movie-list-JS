@@ -86,7 +86,6 @@ function fetchMovies(){
     fetch(`${BASE_URL}/movies`)
     .then(resp => resp.json())
     .then(movieData => {
-        console.log(movieData)
         for (const movie of movieData){
             let m = new Movie(movie.id, movie.img_src, movie.title, movie.description, movie.rating, movie.list)
             m.renderMovie();
@@ -197,7 +196,6 @@ const createMovie = (e) => {
     let img_src = e.target.img_src.value
     let listAttribute = e.target.parentElement.attributes[1].value
     let list_id = parseInt(listAttribute)
-    console.log(title)
     const configObj = {
         method:"POST",
         headers: {
@@ -241,5 +239,7 @@ const createMovie = (e) => {
     }
     
  }
+ 
+
 
  

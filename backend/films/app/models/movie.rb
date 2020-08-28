@@ -2,7 +2,7 @@ class Movie < ApplicationRecord
     belongs_to :list
     has_one_attached :image_src
     validates :rating, numericality: { less_than_or_equal_to: 10 }
-    validates :title, presence: true
+    validates :title, presence: { message: "Movie title is required" }
     before_validation :capitalize_title
     validate do 
         movie_count_valid?

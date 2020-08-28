@@ -54,58 +54,60 @@ class List{
               <input type="text" id="img_src" placeholder="Enter image URL"><br>
               <input type="submit" value="submit">
             </form>
-        `
+          `
 
             // appending to document ***********
 
-        listDiv.appendChild(div)
-        div.appendChild(h3)
-        div.appendChild(p)
-        div.appendChild(ul)
-        div.appendChild(button)
-        div.appendChild(deleteBtn)
-        div.appendChild(movieFormContainer)
+          listDiv.appendChild(div)
+          div.appendChild(h3)
+          div.appendChild(p)
+          div.appendChild(ul)
+          div.appendChild(button)
+          div.appendChild(deleteBtn)
+          div.appendChild(movieFormContainer)
         
             // adding event listeners ***********
         
-        this.movies.forEach(movie => renderMovie(movie))  
+          this.movies.forEach(movie => renderMovie(movie))  
 
-        movieFormContainer.addEventListener('submit', createMovie)
+          movieFormContainer.addEventListener('submit', createMovie)
 
-        button.addEventListener('click', () => {
+          button.addEventListener('click', () => {
             addMovie = !addMovie;
               if (addMovie) {
                 movieFormContainer.style.display = "block";
               } else {
                 movieFormContainer.style.display = "none";
               }
-        })
+          })
 
-        h3.addEventListener('click', ()=>{
-          addList = !addList;
-              if (addList) {
-                ul.style.display = "inline-block";
-              } else {
-                ul.style.display = "none";
-              }
-        })
+          h3.addEventListener('click', ()=>{
+            addList = !addList;
+                if (addList) {
+                  ul.style.display = "inline-block";
+                } else {
+                  ul.style.display = "none";
+                }
+          })
         
-        deleteBtn.addEventListener('click', (e) => {
-          
-          let result = confirm(`Want to delete The ${this.title}?`);
-        if (result) {
-          fetch(`${BASE_URL}/lists/${e.target.dataset.id}`, {
-            method:'DELETE'
-          })
-          .then(response => {
-            e.target.parentElement.remove()
-          })
-        }
+          deleteBtn.addEventListener('click', (e) => {
+            let result = confirm(`Want to delete The ${this.title}?`);
+              if (result) {
+                fetch(`${BASE_URL}/lists/${e.target.dataset.id}`, {
+                method:'DELETE'
+                })
+                .then(response => {
+                  e.target.parentElement.remove()
+                })
+              }
         })
          
         
          
     }
+
+   
+    
      
 }
 
