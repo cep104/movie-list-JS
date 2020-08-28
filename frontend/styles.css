@@ -16,10 +16,11 @@ ol li {
   width:80%;
   border: #ff8c8c solid ;
   margin-bottom: 2%;
+  padding: 2%;
 }
 
 .lists-container{
-  background-color: #e168bb;
+  
   margin-bottom: 2%;
   display:block;
   margin-left: 5%;
@@ -71,5 +72,14 @@ h2:hover{
 }
 
 .movie-img {
-  width:100%;
+  width:95%;
+  display: block;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 1em;
+}
+.edit-form {
+  display:none;
 }

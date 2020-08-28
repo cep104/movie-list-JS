@@ -118,7 +118,7 @@ const renderMovie = (movie) => {
    
     
     editFormContainer.innerHTML = `
-    <form id='editForm' data-set=${movie.id}>
+    <form id='editForm${movie.id}' class='edit-form' data-set=${movie.id}>
               <label for="title">Title: </label>
               <input type="text" id="title" ><br>
               <label for="description">Description: </label>
@@ -133,7 +133,6 @@ const renderMovie = (movie) => {
     `
     li.appendChild(image)
     li.appendChild(button)
-    
     li.appendChild(editButton)
     li.appendChild(editFormContainer)
     ul.appendChild(li)
@@ -141,7 +140,16 @@ const renderMovie = (movie) => {
 
     button.addEventListener('click', deleteMovie)
     editFormContainer.addEventListener('submit', editMovies)
+    editButton.addEventListener('click', ()=>{
+        let listFormContainer = document.getElementById(`editForm${movie.id}`)
 
+    addList = !addList;
+              if (addList) {
+                listFormContainer.style.display = "block";
+              } else {
+                listFormContainer.style.display = "none";
+              }
+    })
     
     
  }
