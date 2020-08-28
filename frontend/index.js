@@ -31,7 +31,7 @@ function createListForm(){
     <label for="title">Title: </label><br>
     <input type="text" id="title"><br>
     <label for="description">Description: </label><br>
-    <textarea name="description" rows="4" cols="20"></textarea><br>
+    <input  type="text" id="description"><br>
     <input type="submit" value="Create Movie List">
     </form>
     `
@@ -55,7 +55,7 @@ function listClick(){
 function listFormSubmission(e){
     e.preventDefault()
     let title = document.getElementById('title').value
-    let description = document.getElementById('description').value || 'n/a'
+    let description = document.getElementById('description').value
     
     let list = {
         title: title,
@@ -74,7 +74,8 @@ function listFormSubmission(e){
 .then(list => {
     let l = new List(list)
     l.renderList()
-    listClick()
+    location.reload();
+    
     
 })
 }
@@ -153,6 +154,7 @@ const renderMovie = (movie) => {
     
     
  }
+ 
 
  const editMovies = (e) => {
     e.preventDefault()
